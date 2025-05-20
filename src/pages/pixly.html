@@ -26,7 +26,7 @@
                 <label for="device1">Pixly</label><br>
             </form>
             <hr>
-            <esp-web-install-button manifest="https://raw.githubusercontent.com/VaAndCob/Pixly/main/firmware/pixly_manifest.json" id="init-button">
+            <esp-web-install-button manifest="../../firmware/pixly/pixly_manifest.json" id="init-button">
                 <button slot="activate" style="margin-top: 30px;background-color: green">Flash</button><br>
                 <span slot="unsupported">Your browser doesn't support!</span><br>
                 <span slot="not-allowed">Not support HTTP!</span>
@@ -40,7 +40,7 @@
     <script type="module" src="https://vaandcob.github.io/webpage/webserial/install-button.js?module"></script>
 
     <script>
-        let url = 'https://raw.githubusercontent.com/VaAndCob/Pixly/main/firmware/'
+        let url = '../../firmware/pixly/'
         //output message on terminal textarea
         function terminalOut(message) {
             terminal.innerHTML += message + '\n';
