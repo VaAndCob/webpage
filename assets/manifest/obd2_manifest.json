@@ -1,0 +1,19 @@
+Sure, here's the content for the file `/web-flasher-app/web-flasher-app/assets/manifest/obd2_manifest.json`:
+
+{
+    "name": "Va&Cob OBD2 Gauge",
+    "description": "Manifest for the Va&Cob OBD2 Gauge device.",
+    "version": "1.0",
+    "permissions": [
+        "serial",
+        "usb"
+    ],
+    "files": [
+        "obd2_firmware.bin"
+    ],
+    "launch": {
+        "web": {
+            "start_url": "https://example.com/obd2-gauge"
+        }
+    }
+}

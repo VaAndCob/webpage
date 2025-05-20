@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Va&Cob OBD2 Gauge</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="referrer" content="no-referrer" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/tabs.css">
+</head>
+
+<body>
+    <div>
+        1. Connect OBD2 to the vehicle<br>
+        2. Click Connect to read data<br>
+        3. Use the gauge to monitor performance<br>
+    </div><br>
+    <div id="main">
+        <fieldset>
+            <legend>Select Vehicle Model</legend>
+            <form id="vehicle-select">
+                <input type="radio" id="t5" name="device" value="T5" style="margin: 20px" onclick="setManifest('T5')" checked />
+                <label for="T5">Ford T5</label><br>          
+                <input type="radio" id="t6" name="device" value="T6" style="margin: 20px" onclick="setManifest('T6')"/>
+                <label for="T6">Ford T6</label><br>
+            </form>
+            <hr>
+            <esp-web-install-button manifest="obd2_manifest.json" id="init-button">
+                <button slot="activate" style="margin-top: 30px;background-color: green">
+                    Connect</button><br>
+                <span slot="unsupported">Your browser doesn't support!</span><br>
+                <span slot="not-allowed">Not support HTTP!</span>
+            </esp-web-install-button>
+            <div class="terminal-container">
+                <textarea readonly id="terminal"></textarea>
+            </div>
+        </fieldset>
+    </div>
+
+    <script type="module" src="https://vaandcob.github.io/webpage/webserial/install-button.js?module"></script>
+
+    <script>
+        let url = 'https://github.com/VaAndCob/ESP32-OBD2-Gauge/blob/main/sketch/firmware/';
+        function terminalOut(message) {
+            terminal.innerHTML += message + '\n';
+            terminal.scrollTop = terminal.scrollHeight; // Scroll to the bottom
+        }
+
+        function setManifest(device) {
+            document.getElementById('init-button').setAttribute('manifest', `${url}${device}_manifest.json`);
+            terminalOut('Select Device -> ' + device);
+        }
+
+        window.onload = function () {
+            terminalOut('Select device -> T5');
+        }
+    </script>
+</body>
+
+</html>

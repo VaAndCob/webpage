@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Va&Cob Web Flasher</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="referrer" content="no-referrer" />
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/tabs.css">
+</head>
+<body>
+    <div class="tab-container">
+        <div class="tabs">
+            <button class="tab-button active" data-tab="obd2">Va&Cob OBD2 Gauge</button>
+            <button class="tab-button" data-tab="pixly">Pixly</button>
+            <button class="tab-button" data-tab="other">Other Device</button>
+        </div>
+        
+<div class="tab-content">
+    <iframe 
+        id="content-frame" 
+        src="./pages/obd2-gauge.html" 
+        frameborder="0" 
+        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
+        onerror="console.error('Failed to load page')"
+        onload="console.log('Page loaded successfully')">
+    </iframe>
+</div>
+    </div>
+
+    <script src="./js/tabs.js"></script>
+</body>
+</html>

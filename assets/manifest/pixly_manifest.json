@@ -1,0 +1,16 @@
+Sure, here's the contents for the file: /web-flasher-app/web-flasher-app/assets/manifest/pixly_manifest.json
+
+{
+    "name": "Pixly Device",
+    "description": "Manifest for the Pixly device used in the flashing process.",
+    "version": "1.0.0",
+    "permissions": [
+        "flash",
+        "read",
+        "write"
+    ],
+    "files": [
+        "firmware/pixly_firmware.bin"
+    ],
+    "url": "https://example.com/pixly"
+}
