@@ -28,7 +28,7 @@
                 <label for="T6">Ford T6</label><br>
             </form>
             <hr>
-            <esp-web-install-button manifest="https://raw.githubusercontent.com/VaAndCob/ESP32-OBD2-Gauge/blob/main/sketch/firmware/T5_manifest.json" id="init-button">
+            <esp-web-install-button manifest="https://raw.githubusercontent.com/VaAndCob/ESP32-OBD2-Gauge/main/sketch/firmware/T5_manifest.json" id="init-button">
                 <button slot="activate" style="margin-top: 30px;background-color: green">
                     Connect</button><br>
                 <span slot="unsupported">Your browser doesn't support!</span><br>
@@ -43,7 +43,7 @@
     <script type="module" src="https://vaandcob.github.io/webpage/webserial/install-button.js?module"></script>
 
     <script>
-        let url = 'https://raw.githubusercontent.com/VaAndCob/ESP32-OBD2-Gauge/blob/main/sketch/firmware/';
+        let url = 'https://raw.githubusercontent.com/VaAndCob/ESP32-OBD2-Gauge/main/sketch/firmware/';
         function terminalOut(message) {
             terminal.innerHTML += message + '\n';
             terminal.scrollTop = terminal.scrollHeight; // Scroll to the bottom
