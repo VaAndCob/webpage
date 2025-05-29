@@ -10,7 +10,7 @@ web-flasher-app
 │   │   └── tabs.js
 │   └── pages
 │       ├── obd2-gauge.html
-│       ├── pixly.html
+│       ├── printpoop.html
 │       └── other-device.html
 ├── assets
 │   └── manifest
