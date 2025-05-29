@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Pixly Web Flasher</title>
+    <title>PrintpooP Web Flasher</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="referrer" content="no-referrer" />
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -22,11 +22,11 @@
         <fieldset>
             <legend>Select firmware</legend>
             <form id="select-firmware">
-                <input type="radio" id="device1" name="device" value="pixly" style="margin: 20px" onclick="setManifest('pixly')" checked />
-                <label for="device1">Pixly</label><br>
+                <input type="radio" id="device1" name="device" value="printpoop" style="margin: 20px" onclick="setManifest('printpoop')" checked />
+                <label for="device1">PrintpooP</label><br>
             </form>
             <hr>
-            <esp-web-install-button manifest="../../firmware/pixly/pixly_manifest.json" id="init-button">
+            <esp-web-install-button manifest="../../firmware/printpoop/printpoop_manifest.json" id="init-button">
                 <button slot="activate" style="margin-top: 30px;background-color: green">Flash</button><br>
                 <span slot="unsupported">Your browser doesn't support!</span><br>
                 <span slot="not-allowed">Not support HTTP!</span>
@@ -40,7 +40,7 @@
     <script type="module" src="https://vaandcob.github.io/webpage/webserial/install-button.js?module"></script>
 
     <script>
-        let url = '../../firmware/pixly/'
+        let url = '../../firmware/printpoop/'
         //output message on terminal textarea
         function terminalOut(message) {
             terminal.innerHTML += message + '\n';
