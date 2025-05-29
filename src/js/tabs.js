@@ -12,8 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
             case 'obd2':
                 pageName = 'obd2-gauge';
                 break;
-            case 'pixly':
-                pageName = 'pixly';
+            case 'printpoop':
+                pageName = 'printpoop';
                 break;
             case 'other':
                 pageName = 'other-device';
