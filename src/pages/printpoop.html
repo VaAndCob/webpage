@@ -24,12 +24,13 @@
         <fieldset>
             <legend>Select firmware</legend>
             <form id="select-firmware">
-                <input type="radio" id="device1" name="device" value="printpoop" style="margin: 20px" onclick="setManifest('printpoop')" checked />
-                <label for="printpoop">PrintpooP</label><br>
-             
+                <input type="radio" id="device1" name="device" value="printpoop24" style="margin: 20px" onclick="setManifest('printpoop24')" checked />
+                <label for="printpoop24">PrintpooP 2.4"</label><br>
+                <input type="radio" id="device2" name="device" value="printpoop28" style="margin: 20px" onclick="setManifest('printpoop28')"/>
+                <label for="printpoop28">PrintpooP 2.8"</label><br>
             </form>
             <hr>
-            <esp-web-install-button manifest="../../firmware/printpoop/printpoop_manifest.json" id="init-button">
+            <esp-web-install-button manifest="../../firmware/printpoop/printpoop24_manifest.json" id="init-button">
                 <button slot="activate" style="margin-top: 30px;background-color: green">Flash</button><br>
                 <span slot="unsupported">Your browser doesn't support!</span><br>
                 <span slot="not-allowed">Not support HTTP!</span>
@@ -57,7 +58,7 @@
         }
 
         window.onload = function () {
-            terminalOut('Select firmware -> PrintpooP');
+            terminalOut('Select firmware -> PrintpooP CYD 2.4"');
         }
     </script>
 </body>
