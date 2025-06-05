@@ -55,7 +55,7 @@
         // change init device manifest for flashing button
         function setManifest(device) {
             document.getElementById('init-button').setAttribute('manifest', `${url}${device}_manifest.json`);
-            terminalOut('Select Device -> ' + device);
+            terminalOut('Select firmware -> ' + device);
         }
 
         window.onload = function () {
