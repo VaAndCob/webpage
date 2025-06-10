@@ -1,5 +1,8 @@
 Version history
 
+1.4.1
+- AMS icon disappeared when failed print fixed
+---
 1.4.0
 - Integrate the MPU6050 gyro sensor.
 - After one minute of inactivity, trigger a "PrintpooP" swinging animation for the idle state.
