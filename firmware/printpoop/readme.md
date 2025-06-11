@@ -2,6 +2,7 @@ Version history
 
 1.4.2
 - swing icon switch to animation when print stage change fixed
+---
 1.4.1
 - AMS icon disappeared when failed print fixed
 ---
