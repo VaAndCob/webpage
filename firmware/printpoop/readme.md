@@ -1,5 +1,9 @@
 Version history
 
+1.4.3
+- MQTT connection is difficult to connect, fixed.
+- Primthead animation fixed
+---
 1.4.2
 - swing icon switch to animation when print stage change fixed
 ---
