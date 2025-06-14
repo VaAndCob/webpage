@@ -1,5 +1,7 @@
 Version history
 
+1.4.4
+- minor bug fixed
 1.4.3
 - MQTT connection is difficult to connect, fixed.
 - Primthead animation fixed
