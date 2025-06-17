@@ -1,7 +1,13 @@
 Version history
 
+1.4.5
+- AMS current slot display fixed.
+- Temperature display fixed.
+- RGB LED initiazlize added
+---
 1.4.4
 - minor bug fixed
+---
 1.4.3
 - MQTT connection is difficult to connect, fixed.
 - Primthead animation fixed
