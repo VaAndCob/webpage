@@ -76,12 +76,13 @@
         terminal.scrollTop = terminal.scrollHeight; // Scroll to the bottom
       }
 
-      function setManifest(device) {
+     function setManifest(device) {
         document
           .getElementById("init-button")
           .setAttribute("manifest", `${url}${device}_manifest.json`);
-        terminalOut("Select Device -> " + device);
+        terminalOut("Select firmware -> " + device);
       }
+
 
       window.onload = function () {
         terminalOut("Select device -> T5");
