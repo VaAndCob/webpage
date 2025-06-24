@@ -1,81 +1,108 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <title>Va&Cob OBD2 Gauge</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="referrer" content="no-referrer" />
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/tabs.css">
-</head>
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/tabs.css" />
+  </head>
 
-<body>
-     <h2>Va&Cob OBD2 Gauge</h2>
+  <body>
+    <h2 id="firmware-title">Va&Cob OBD2 Gauge</h2>
     <div>
-        1. Google Chrome or Microsoft Edge<br>
-        2. Plug USB to the ESP32 2.8" TFT<br>
-        3. Select the model<br>
-        4. Click Flash to install firmware<br>
-        5. Check "Erase device" for a new firmware install<br>
-           Uncheck for only updating a new firmware version<br>
-    </div><br>
+      1. Google Chrome or Microsoft Edge<br />
+      2. Plug USB to the ESP32 2.8" TFT<br />
+      3. Select the model<br />
+      4. Click Flash to install firmware<br />
+      5. Check "Erase device" for a new firmware install<br />
+      Uncheck for only updating a new firmware version<br />
+    </div>
+    <br />
     <div id="main">
-        <fieldset>
-            <legend>Select Vehicle Model</legend>
-            <form id="vehicle-select">
-                <input type="radio" id="t5" name="device" value="T5" style="margin: 20px" onclick="setManifest('T5')" checked />
-                <label for="T5">Ford T5</label><br>          
-                <input type="radio" id="t6" name="device" value="T6" style="margin: 20px" onclick="setManifest('T6')"/>
-                <label for="T6">Ford T6</label><br>
-            </form>
-            <hr>
-            <esp-web-install-button manifest="../../firmware/vaandcobobd2gauge/T5_manifest.json" id="init-button">
-               <button slot="activate" style="margin-top: 30px;">Flash</button><br>
-                <span slot="unsupported">Your browser doesn't support!</span><br>
-                <span slot="not-allowed">Not support HTTP!</span>
-            </esp-web-install-button>
-            <div class="terminal-container">
-                <textarea readonly id="terminal"></textarea>
-            </div>
-        </fieldset>
+      <fieldset>
+        <legend>Select Vehicle Model</legend>
+        <form id="vehicle-select">
+          <input
+            type="radio"
+            id="t5"
+            name="device"
+            value="T5"
+            style="margin: 20px"
+            onclick="setManifest('T5')"
+            checked
+          />
+          <label for="T5">Ford T5</label><br />
+          <input
+            type="radio"
+            id="t6"
+            name="device"
+            value="T6"
+            style="margin: 20px"
+            onclick="setManifest('T6')"
+          />
+          <label for="T6">Ford T6</label><br />
+        </form>
+        <hr />
+        <esp-web-install-button
+          manifest="../../firmware/vaandcobobd2gauge/T5_manifest.json"
+          id="init-button"
+        >
+          <button slot="activate" style="margin-top: 30px">Flash</button><br />
+          <span slot="unsupported">Your browser doesn't support!</span><br />
+          <span slot="not-allowed">Not support HTTP!</span>
+        </esp-web-install-button>
+        <div class="terminal-container">
+          <textarea readonly id="terminal"></textarea>
+        </div>
+      </fieldset>
     </div>
 
-    <script type="module" src="https://vaandcob.github.io/webpage/webserial/install-button.js?module"></script>
+    <script
+      type="module"
+      src="https://vaandcob.github.io/webpage/webserial/install-button.js?module"
+    ></script>
 
     <script>
-        let url = '../../firmware/vaandcobobd2gauge/';
-        function terminalOut(message) {
-            terminal.innerHTML += message + '\n';
-            terminal.scrollTop = terminal.scrollHeight; // Scroll to the bottom
-        }
+      let url = "../../firmware/vaandcobobd2gauge/";
+      function terminalOut(message) {
+        terminal.innerHTML += message + "\n";
+        terminal.scrollTop = terminal.scrollHeight; // Scroll to the bottom
+      }
 
-        function setManifest(device) {
-            document.getElementById('init-button').setAttribute('manifest', `${url}${device}_manifest.json`);
-            terminalOut('Select Device -> ' + device);
-        }
+      function setManifest(device) {
+        document
+          .getElementById("init-button")
+          .setAttribute("manifest", `${url}${device}_manifest.json`);
+        terminalOut("Select Device -> " + device);
+      }
 
-        window.onload = function () {
-            terminalOut('Select device -> T5');
-               readManifest('T5');
-        }
+      window.onload = function () {
+        terminalOut("Select device -> T5");
+        readManifest("T5");
+      }
 
-    async function readManifest(device) {
-    try {
-        const response = await fetch(`${url}${device}_manifest.json`);
-        if (!response.ok) {
+      async function readManifest(device) {
+        try {
+          const response = await fetch(`${url}${device}_manifest.json`);
+          if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          const manifestData = await response.json();
+          // Update the h2 heading
+          document.querySelector(
+            "h2"
+          ).textContent = `${manifestData.name} - ${manifestData.version}`;
+        } catch (error) {
+          terminalOut(`Error reading manifest: ${error.message}`);
         }
-        const manifestData = await response.json();
-        // Update the h2 heading
-        document.querySelector('h2').textContent = `${manifestData.name} - ${manifestData.version}`;
-    } catch (error) {
-        terminalOut(`Error reading manifest: ${error.message}`);
-    }
-}
+      }
     </script>
-</body>
-
+  </body>
 </html>

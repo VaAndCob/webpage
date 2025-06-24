@@ -1,83 +1,110 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <title>PrintpooP Web Flasher</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="referrer" content="no-referrer" />
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/tabs.css">
-</head>
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/tabs.css" />
+  </head>
 
-<body>
-  <h2 id="firmware-title">PrintpooP</h2>
+  <body>
+    <h2 id="firmware-title">PrintpooP</h2>
     <div>
-        1. Google Chrome or Microsoft Edge<br>
-        2. Plug USB to the ESP32 2.4" or 2.8" TFT<br>
-        3. Select the model<br>
-        4. Click Flash to install firmware<br>
-        5. Check "Erase device" for a new firmware install<br>
-            Uncheck for only updating a new firmware version<br>
-    </div><br>
+      1. Google Chrome or Microsoft Edge<br />
+      2. Plug USB to the ESP32 2.4" or 2.8" TFT<br />
+      3. Select the model<br />
+      4. Click Flash to install firmware<br />
+      5. Check "Erase device" for a new firmware install<br />
+      Uncheck for only updating a new firmware version<br />
+    </div>
+    <br />
     <div id="main">
-        <fieldset>
-            <legend>Select firmware</legend>
-            <form id="select-firmware">
-                <input type="radio" id="device1" name="device" value="printpoop24" style="margin: 20px" onclick="setManifest('printpoop24')" checked />
-                <label for="printpoop24">PrintpooP 2.4"</label><br>
-                <input type="radio" id="device2" name="device" value="printpoop28" style="margin: 20px" onclick="setManifest('printpoop28')"/>
-                <label for="printpoop28">PrintpooP 2.8"</label><br>
-            </form>
-            <hr>
-            <esp-web-install-button manifest="../../firmware/printpoop/printpoop24_manifest.json" id="init-button">
-                <button slot="activate" style="margin-top: 30px;">Flash</button><br>
-                <span slot="unsupported">Your browser doesn't support!</span><br>
-                <span slot="not-allowed">Not support HTTP!</span>
-            </esp-web-install-button>
-            <div class="terminal-container">
-                <textarea readonly id="terminal"></textarea>
-            </div>
-        </fieldset>
+      <fieldset>
+        <legend>Select firmware</legend>
+        <form id="select-firmware">
+          <input
+            type="radio"
+            id="device1"
+            name="device"
+            value="printpoop24"
+            style="margin: 20px"
+            onclick="setManifest('printpoop24')"
+            checked
+          />
+          <label for="printpoop24">PrintpooP 2.4"</label><br />
+          <input
+            type="radio"
+            id="device2"
+            name="device"
+            value="printpoop28"
+            style="margin: 20px"
+            onclick="setManifest('printpoop28')"
+          />
+          <label for="printpoop28">PrintpooP 2.8"</label><br />
+        </form>
+        <hr />
+        <esp-web-install-button
+          manifest="../../firmware/printpoop/printpoop24_manifest.json"
+          id="init-button"
+        >
+          <button slot="activate" style="margin-top: 30px">Flash</button><br />
+          <span slot="unsupported">Your browser doesn't support!</span><br />
+          <span slot="not-allowed">Not support HTTP!</span>
+        </esp-web-install-button>
+        <div class="terminal-container">
+          <textarea readonly id="terminal"></textarea>
+        </div>
+      </fieldset>
     </div>
 
-    <script type="module" src="https://vaandcob.github.io/webpage/webserial/install-button.js?module"></script>
+    <script
+      type="module"
+      src="https://vaandcob.github.io/webpage/webserial/install-button.js?module"
+    ></script>
 
     <script>
-        let url = '../../firmware/printpoop/'
-        //output message on terminal textarea
-        function terminalOut(message) {
-            terminal.innerHTML += message + '\n';
-            terminal.scrollTop = terminal.scrollHeight; // Scroll to the bottom
-        }
+      let url = "../../firmware/printpoop/";
+      //output message on terminal textarea
+      function terminalOut(message) {
+        terminal.innerHTML += message + "\n";
+        terminal.scrollTop = terminal.scrollHeight; // Scroll to the bottom
+      }
 
-        // change init device manifest for flashing button
-        function setManifest(device) {
-            document.getElementById('init-button').setAttribute('manifest', `${url}${device}_manifest.json`);
-            terminalOut('Select firmware -> ' + device);
-        }
+      // change init device manifest for flashing button
+      function setManifest(device) {
+        document
+          .getElementById("init-button")
+          .setAttribute("manifest", `${url}${device}_manifest.json`);
+        terminalOut("Select firmware -> " + device);
+      }
 
-        window.onload = function () {
-           terminalOut('Select firmware ->printpoop24');
-             readManifest('printpoop24');
-        }
+      window.onload = function () {
+        terminalOut("Select firmware ->printpoop24");
+        readManifest("printpoop24");
+      };
 
-        async function readManifest(device) {
-    try {
-        const response = await fetch(`${url}${device}_manifest.json`);
-        if (!response.ok) {
+      async function readManifest(device) {
+        try {
+          const response = await fetch(`${url}${device}_manifest.json`);
+          if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          const manifestData = await response.json();
+          // Update the h2 heading
+          document.querySelector(
+            "h2"
+          ).textContent = `${manifestData.name} - ${manifestData.version}`;
+        } catch (error) {
+          terminalOut(`Error reading manifest: ${error.message}`);
         }
-        const manifestData = await response.json();
-        // Update the h2 heading
-        document.querySelector('h2').textContent = `${manifestData.name} - ${manifestData.version}`;
-    } catch (error) {
-        terminalOut(`Error reading manifest: ${error.message}`);
-    }
-}
+      }
     </script>
-</body>
-
+  </body>
 </html>

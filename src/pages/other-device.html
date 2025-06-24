@@ -1,60 +1,79 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <title>Other Device</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/tabs.css">
-</head>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/tabs.css" />
+  </head>
 
-<body>
+  <body>
     <div>
-        <h1>Other Device Flashing</h1>
-        <div>
-            1. Google Chrome or Microsoft Edge<br>
-            2. Select the firmware<br>
-            3. Click Flash to install firmware<br>
-        </div><br>
-        <div id="main">
-            <fieldset>
-                <legend>Select firmware for Other Device</legend>
-                <form id="select-firmware-other">
-                    <input type="radio" id="device-other" name="device" value="other_device" style="margin: 20px"
-                        onclick="setManifest('other_device')" checked />
-                    <label for="device-other">Other Device</label><br>
-                </form>
-                <hr>
-                <esp-web-install-button manifest="other_device_manifest.json" id="init-button-other">
-                    <button slot="activate" style="margin-top: 30px;background-color: green">
-                        Flash</button><br>
-                    <span slot="unsupported">Your browser doesn't support!</span><br>
-                    <span slot="not-allowed">Not support HTTP!</span>
-                </esp-web-install-button>
-                <div class="terminal-container">
-                    <textarea readonly id="terminal-other"></textarea>
-                </div>
-            </fieldset>
-        </div>
+      <h1>Other Device Flashing</h1>
+      <div>
+        1. Google Chrome or Microsoft Edge<br />
+        2. Select the firmware<br />
+        3. Click Flash to install firmware<br />
+      </div>
+      <br />
+      <div id="main">
+        <fieldset>
+          <legend>Select firmware for Other Device</legend>
+          <form id="select-firmware-other">
+            <input
+              type="radio"
+              id="device-other"
+              name="device"
+              value="other_device"
+              style="margin: 20px"
+              onclick="setManifest('other_device')"
+              checked
+            />
+            <label for="device-other">Other Device</label><br />
+          </form>
+          <hr />
+          <esp-web-install-button
+            manifest="other_device_manifest.json"
+            id="init-button-other"
+          >
+            <button
+              slot="activate"
+              style="margin-top: 30px; background-color: green"
+            >
+              Flash</button
+            ><br />
+            <span slot="unsupported">Your browser doesn't support!</span><br />
+            <span slot="not-allowed">Not support HTTP!</span>
+          </esp-web-install-button>
+          <div class="terminal-container">
+            <textarea readonly id="terminal-other"></textarea>
+          </div>
+        </fieldset>
+      </div>
     </div>
 
-    <script type="module" src="https://vaandcob.github.io/webpage/webserial/install-button.js?module"></script>
+    <script
+      type="module"
+      src="https://vaandcob.github.io/webpage/webserial/install-button.js?module"
+    ></script>
     <script src="../js/flasher.js"></script>
     <script>
-        function terminalOut(message) {
-            document.getElementById('terminal-other').innerHTML += message + '\n';
-            document.getElementById('terminal-other').scrollTop = document.getElementById('terminal-other').scrollHeight;
-        }
+      function terminalOut(message) {
+        document.getElementById("terminal-other").innerHTML += message + "\n";
+        document.getElementById("terminal-other").scrollTop =
+          document.getElementById("terminal-other").scrollHeight;
+      }
 
-        function setManifest(device) {
-            document.getElementById('init-button-other').setAttribute('manifest', `${device}_manifest.json`);
-            terminalOut('Select Device -> ' + device);
-        }
+      function setManifest(device) {
+        document
+          .getElementById("init-button-other")
+          .setAttribute("manifest", `${device}_manifest.json`);
+        terminalOut("Select Device -> " + device);
+      }
 
-        window.onload = function () {
-            terminalOut('Select firmware -> Other Device');
-        }
+      window.onload = function () {
+        terminalOut("Select firmware -> Other Device");
+      }
     </script>
-</body>
-
+  </body>
 </html>
