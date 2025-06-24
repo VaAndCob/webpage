@@ -33,8 +33,7 @@
             </form>
             <hr>
             <esp-web-install-button manifest="../../firmware/vaandcobobd2gauge/T5_manifest.json" id="init-button">
-                <button slot="activate" style="margin-top: 30px;background-color: green">
-                    Connect</button><br>
+               <button slot="activate" style="margin-top: 30px;">Flash</button><br>
                 <span slot="unsupported">Your browser doesn't support!</span><br>
                 <span slot="not-allowed">Not support HTTP!</span>
             </esp-web-install-button>
@@ -60,7 +59,21 @@
 
         window.onload = function () {
             terminalOut('Select device -> T5');
+               readManifest('T5');
         }
+
+                async function readManifest(device) {
+    try {
+        const response = await fetch(`${url}${device}_manifest.json`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const manifestData = await response.json();
+        // Update the h2 heading
+        document.querySelector('h2').textContent = `${manifestData.name} - ${manifestData.version}`;
+    } catch (error) {
+        terminalOut(`Error reading manifest: ${error.message}`);
+    }
     </script>
 </body>
 
