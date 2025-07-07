@@ -43,11 +43,20 @@
             type="radio"
             id="device2"
             name="device"
-            value="printpoop28"
+            value="printpoop28_1"
             style="margin: 20px"
-            onclick="setManifest('printpoop28')"
+            onclick="setManifest('printpoop28_1')"
           />
-          <label for="printpoop28">PrintpooP 2.8"</label><br />
+          <label for="printpoop28_1">PrintpooP 2.8" Variant 1</label><br />
+          <input
+            type="radio"
+            id="device2"
+            name="device"
+            value="printpoop28_2"
+            style="margin: 20px"
+            onclick="setManifest('printpoop28_2')"
+          />
+          <label for="printpoop28_2">PrintpooP 2.8" Variant 2 Randomnerd</label><br />
         </form>
         <hr />
         <esp-web-install-button
@@ -88,7 +97,7 @@
       window.onload = function () {
         terminalOut("Select firmware ->printpoop24");
         readManifest("printpoop24");
-      };
+      }
 
       async function readManifest(device) {
         try {
