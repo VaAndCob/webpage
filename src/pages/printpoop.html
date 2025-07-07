@@ -83,7 +83,7 @@
 
     <script
       type="module"
-      src="https://vaandcob.github.io/webpage/webserial/install-button.js?module"
+      src="../../webserial/install-button.js?module"
     ></script>
 
     <script>
@@ -104,8 +104,7 @@
       }
 
       window.onload = function () {
-        terminalOut("Select firmware ->printpoop24");
-        readManifest("printpoop24");
+        setManifest("printpoop24");
       }
 
       async function readManifest(device) {
