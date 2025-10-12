@@ -1,6 +1,6 @@
 {
     "name": "PrintpooP",
-    "version": "1.4.6",
+    "version": "1.5.0",
     "new_install_prompt_erase": true,
     "new_install_improv_wait_time": 0,
     "builds": [
