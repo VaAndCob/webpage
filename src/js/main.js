@@ -9,7 +9,7 @@ web-flasher-app
 │   │   ├── flasher.js
 │   │   └── tabs.js
 │   └── pages
-│       ├── obd2-gauge.html
+│       ├── esp32-bluetooth-obd2-gauge.html
 │       ├── printpoop.html
 │       └── other-device.html
 ├── assets

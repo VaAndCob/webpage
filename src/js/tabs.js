@@ -10,16 +10,16 @@ document.addEventListener('DOMContentLoaded', () => {
         let pageName;
         switch(tabName) {
             case 'obd2':
-                pageName = 'obd2-gauge';
+                pageName = 'esp32-bluetooth-obd2-gauge';
                 break;
             case 'printpoop':
                 pageName = 'printpoop';
                 break;
             case 'other':
-                pageName = 'other-device';
+                pageName = 'OBD2-Gauge-Catalyst';
                 break;
             default:
-                pageName = 'obd2-gauge';
+                pageName = 'esp32-bluetooth-obd2-gauge';
         }
         const newSrc = `./pages/${pageName}.html`;
         console.log('Loading page:', newSrc);
