@@ -36,26 +36,23 @@
             id="t5"
             name="device"
             value="T5"
-            style="margin: 20px"
+            class="firmware-radio"
             onclick="setManifest('T5')"
             checked
           />
-          <label for="T5">Ford T5</label><br />
+          <label for="t5">Ford T5</label><br />
           <input
             type="radio"
             id="t6"
             name="device"
             value="T6"
-            style="margin: 20px"
+            class="firmware-radio"
             onclick="setManifest('T6')"
           />
-          <label for="T6">Ford T6</label><br />
+          <label for="t6">Ford T6</label><br />
         </form>
         <hr />
-        <esp-web-install-button
-          manifest="../../firmware/vaandcobobd2gauge/T5_manifest.json"
-          id="init-button"
-        >
+        <esp-web-install-button id="init-button">
           <button slot="activate" style="margin-top: 30px">Flash</button><br />
           <span slot="unsupported">Your browser doesn't support!</span><br />
           <span slot="not-allowed">Not support HTTP!</span>
@@ -73,23 +70,24 @@
 
     <script>
       let url = "../../firmware/vaandcobobd2gauge/";
+      const terminal = document.getElementById("terminal");
+
       function terminalOut(message) {
-        terminal.innerHTML += message + "\n";
+        terminal.value += message + "\n";
         terminal.scrollTop = terminal.scrollHeight; // Scroll to the bottom
       }
 
-     function setManifest(device) {
+      function setManifest(device) {
         document
           .getElementById("init-button")
           .setAttribute("manifest", `${url}${device}_manifest.json`);
         terminalOut("Select firmware -> " + device);
+        readManifest(device);
       }
-
 
       window.onload = function () {
-        terminalOut("Select device -> T5");
-       // readManifest("T5");
-      }
+        setManifest("T5");
+      };
 
       async function readManifest(device) {
         try {
