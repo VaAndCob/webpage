@@ -16,8 +16,13 @@
 
   <body>
     <h2 id="firmware-title">PrintpooP</h2>
-    <a href="https://github.com/VaAndCob/PrintpooP" target="_blank" rel="noopener noreferrer">Link to the project</a>
-    <br><br>
+    <a
+      href="https://github.com/VaAndCob/PrintpooP"
+      target="_blank"
+      rel="noopener noreferrer"
+      >Link to the project</a
+    >
+    <br /><br />
     <div>
       1. Google Chrome or Microsoft Edge<br />
       2. Plug USB to the ESP32 2.4" or 2.8" TFT<br />
@@ -31,7 +36,7 @@
       <fieldset>
         <legend>Select firmware</legend>
         <form id="select-firmware">
-            <!--Kitten-->
+          <!--Kitten-->
           <input
             type="radio"
             id="device1"
@@ -50,7 +55,8 @@
             style="margin: 20px"
             onclick="setManifest('printpoop28_1_kitten')"
           />
-          <label for="printpoop28_1">🐯 PrintpooP 2.8" Kitten Variant 1</label><br />
+          <label for="printpoop28_1">🐯 PrintpooP 2.8" Kitten Variant 1</label
+          ><br />
           <input
             type="radio"
             id="device3"
@@ -67,30 +73,32 @@
               rel="noopener noreferrer"
               >Randomnerd</a
             ></label
-          ><br /><hr>
+          ><br />
+          <hr />
           <!--Puppy-->
-            <input
+          <input
             type="radio"
-            id="device1"
+            id="device4"
             name="device"
             value="printpoop24"
             style="margin: 20px"
             onclick="setManifest('printpoop24_puppy')"
           />
-          
+
           <label for="printpoop24">🐶 PrintpooP 2.4" Puppy</label><br />
           <input
             type="radio"
-            id="device2"
+            id="device5"
             name="device"
             value="printpoop28_1"
             style="margin: 20px"
             onclick="setManifest('printpoop28_1_puppy')"
           />
-          <label for="printpoop28_1">🐶 PrintpooP 2.8" Puppy Variant 1</label><br />
+          <label for="printpoop28_1">🐶 PrintpooP 2.8" Puppy Variant 1</label
+          ><br />
           <input
             type="radio"
-            id="device3"
+            id="device6"
             name="device"
             value="printpoop28_2"
             style="margin: 20px"
@@ -145,7 +153,7 @@
 
       window.onload = function () {
         setManifest("printpoop24_kitten");
-      }
+      };
 
       async function readManifest(device) {
         try {
