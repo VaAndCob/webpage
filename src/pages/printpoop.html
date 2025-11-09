@@ -31,35 +31,73 @@
       <fieldset>
         <legend>Select firmware</legend>
         <form id="select-firmware">
+            <!--Kitten-->
           <input
             type="radio"
             id="device1"
             name="device"
             value="printpoop24"
             style="margin: 20px"
-            onclick="setManifest('printpoop24')"
+            onclick="setManifest('printpoop24_kitten')"
             checked
           />
-          <label for="printpoop24">PrintpooP 2.4"</label><br />
+          <label for="printpoop24">🐯 PrintpooP 2.4" Kitten</label><br />
           <input
             type="radio"
             id="device2"
             name="device"
             value="printpoop28_1"
             style="margin: 20px"
-            onclick="setManifest('printpoop28_1')"
+            onclick="setManifest('printpoop28_1_kitten')"
           />
-          <label for="printpoop28_1">PrintpooP 2.8" Variant 1</label><br />
+          <label for="printpoop28_1">🐯 PrintpooP 2.8" Kitten Variant 1</label><br />
           <input
             type="radio"
             id="device3"
             name="device"
             value="printpoop28_2"
             style="margin: 20px"
-            onclick="setManifest('printpoop28_2')"
+            onclick="setManifest('printpoop28_2_kitten')"
           />
           <label for="printpoop28_2"
-            >PrintpooP 2.8" Variant 2
+            >🐯 PrintpooP 2.8" Kitten Variant 2
+            <a
+              href="https://randomnerdtutorials.com/esp32-cheap-yellow-display-cyd-pinout-esp32-2432s028r/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Randomnerd</a
+            ></label
+          ><br /><hr>
+          <!--Puppy-->
+            <input
+            type="radio"
+            id="device1"
+            name="device"
+            value="printpoop24"
+            style="margin: 20px"
+            onclick="setManifest('printpoop24_puppy')"
+          />
+          
+          <label for="printpoop24">🐶 PrintpooP 2.4" Puppy</label><br />
+          <input
+            type="radio"
+            id="device2"
+            name="device"
+            value="printpoop28_1"
+            style="margin: 20px"
+            onclick="setManifest('printpoop28_1_puppy')"
+          />
+          <label for="printpoop28_1">🐶 PrintpooP 2.8" Puppy Variant 1</label><br />
+          <input
+            type="radio"
+            id="device3"
+            name="device"
+            value="printpoop28_2"
+            style="margin: 20px"
+            onclick="setManifest('printpoop28_2_puppy')"
+          />
+          <label for="printpoop28_2"
+            >🐶 PrintpooP 2.8" Puppy Variant 2
             <a
               href="https://randomnerdtutorials.com/esp32-cheap-yellow-display-cyd-pinout-esp32-2432s028r/"
               target="_blank"
@@ -106,7 +144,7 @@
       }
 
       window.onload = function () {
-        setManifest("printpoop24");
+        setManifest("printpoop24_kitten");
       }
 
       async function readManifest(device) {
