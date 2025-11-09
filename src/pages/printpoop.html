@@ -40,32 +40,32 @@
           <input
             type="radio"
             id="device1"
+            class="firmware-radio"
             name="device"
-            value="printpoop24"
-            style="margin: 20px"
+            value="printpoop24_kitten"
             onclick="setManifest('printpoop24_kitten')"
             checked
           />
-          <label for="printpoop24">🐯 PrintpooP 2.4" Kitten</label><br />
+          <label for="device1">🐯 PrintpooP 2.4" Kitten</label><br />
           <input
             type="radio"
             id="device2"
+            class="firmware-radio"
             name="device"
-            value="printpoop28_1"
-            style="margin: 20px"
+            value="printpoop28_1_kitten"
             onclick="setManifest('printpoop28_1_kitten')"
           />
-          <label for="printpoop28_1">🐯 PrintpooP 2.8" Kitten Variant 1</label
+          <label for="device2">🐯 PrintpooP 2.8" Kitten Variant 1</label
           ><br />
           <input
             type="radio"
             id="device3"
+            class="firmware-radio"
             name="device"
-            value="printpoop28_2"
-            style="margin: 20px"
+            value="printpoop28_2_kitten"
             onclick="setManifest('printpoop28_2_kitten')"
           />
-          <label for="printpoop28_2"
+          <label for="device3"
             >🐯 PrintpooP 2.8" Kitten Variant 2
             <a
               href="https://randomnerdtutorials.com/esp32-cheap-yellow-display-cyd-pinout-esp32-2432s028r/"
@@ -79,32 +79,31 @@
           <input
             type="radio"
             id="device4"
+            class="firmware-radio"
             name="device"
-            value="printpoop24"
-            style="margin: 20px"
+            value="printpoop24_puppy"
             onclick="setManifest('printpoop24_puppy')"
           />
-
-          <label for="printpoop24">🐶 PrintpooP 2.4" Puppy</label><br />
+          <label for="device4">🐶 PrintpooP 2.4" Puppy</label><br />
           <input
             type="radio"
             id="device5"
+            class="firmware-radio"
             name="device"
-            value="printpoop28_1"
-            style="margin: 20px"
+            value="printpoop28_1_puppy"
             onclick="setManifest('printpoop28_1_puppy')"
           />
-          <label for="printpoop28_1">🐶 PrintpooP 2.8" Puppy Variant 1</label
+          <label for="device5">🐶 PrintpooP 2.8" Puppy Variant 1</label
           ><br />
           <input
             type="radio"
             id="device6"
+            class="firmware-radio"
             name="device"
-            value="printpoop28_2"
-            style="margin: 20px"
+            value="printpoop28_2_puppy"
             onclick="setManifest('printpoop28_2_puppy')"
           />
-          <label for="printpoop28_2"
+          <label for="device6"
             >🐶 PrintpooP 2.8" Puppy Variant 2
             <a
               href="https://randomnerdtutorials.com/esp32-cheap-yellow-display-cyd-pinout-esp32-2432s028r/"
@@ -115,10 +114,7 @@
           ><br />
         </form>
         <hr />
-        <esp-web-install-button
-          manifest="../../firmware/printpoop/printpoop24_manifest.json"
-          id="init-button"
-        >
+        <esp-web-install-button id="init-button">
           <button slot="activate" style="margin-top: 30px">Flash</button><br />
           <span slot="unsupported">Your browser doesn't support!</span><br />
           <span slot="not-allowed">Not support HTTP!</span>
@@ -136,9 +132,10 @@
 
     <script>
       let url = "../../firmware/printpoop/";
+      const terminal = document.getElementById("terminal");
       //output message on terminal textarea
       function terminalOut(message) {
-        terminal.innerHTML += message + "\n";
+        terminal.value += message + "\n";
         terminal.scrollTop = terminal.scrollHeight; // Scroll to the bottom
       }
 
