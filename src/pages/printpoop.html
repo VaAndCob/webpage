@@ -104,14 +104,15 @@
           ><br />
         </form>
         <hr />
+           <div class="terminal-container">
+          <textarea readonly id="terminal"></textarea>
+        </div>
         <esp-web-install-button id="init-button">
           <button slot="activate" style="margin-top: 30px">Flash</button><br />
           <span slot="unsupported">Your browser doesn't support!</span><br />
           <span slot="not-allowed">Not support HTTP!</span>
         </esp-web-install-button>
-        <div class="terminal-container">
-          <textarea readonly id="terminal"></textarea>
-        </div>
+     
       </fieldset>
     </div>
 
@@ -134,6 +135,7 @@
         document
           .getElementById("init-button")
           .setAttribute("manifest", `${url}${device}_manifest.json`);
+          terminal.value = "";//clear terminal
         terminalOut("Select firmware -> " + device);
         readManifest(device);
       }
