@@ -1,34 +1,62 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Va&Cob Web Flasher</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="referrer" content="no-referrer" />
     <link rel="icon" href="fail.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="./css/styles.css">
-    <link rel="stylesheet" href="./css/tabs.css">
-</head>
-<body>
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/tabs.css" />
+  </head>
+  <body>
     <div class="tab-container">
-        <div class="tabs">
-            <button class="tab-button active" data-tab="obd2">ESP32 Bluetooth OBD2 Gauge</button>
-            <button class="tab-button" data-tab="printpoop">PrintpooP</button>
-            <button class="tab-button" data-tab="other">OBD2 Gauge Catalyst</button>
-            <button class="tab-button" onclick="window.open('https://vibetime.pages.dev', '_blank')">🎵 Vibetime</button>
-        </div>
-        
-<div class="tab-content">
-    <iframe 
-        id="content-frame" 
-        src="./pages/esp32-bluetooth-obd2-gauge.html" 
-        frameborder="0" 
-        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
-        onerror="console.error('Failed to load page')"
-        onload="console.log('Page loaded successfully')">
-    </iframe>
-</div>
+      <div class="top-bar">
+        <a href="https://www.buymeacoffee.com/vaandcob"><img
+          src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=vaandcob&button_colour=FF5F5F&font_colour=ffffff&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00"/></a>
+        <button class="vibetime-button" onclick="window.open('https://vibetime.pages.dev', '_blank')">🎵 Vibetime</button>
+      </div>
+
+      <div class="tabs">
+        Select the project:
+        <button class="tab-button active" data-tab="obd2">
+          ESP32 Bluetooth OBD2 Gauge
+        </button>
+        <button class="tab-button" data-tab="printpoop">PrintpooP</button>
+        <button class="tab-button" data-tab="other">OBD2 Gauge Catalyst</button>
+      </div>
+        <p>
+    1. Open a web browser (Google Chrome or Microsoft Edge).<br>
+    2. Connect the ESP32 2.8" TFT to your computer via USB.<br>
+    3. Select the correct board model in the software.<br>
+    4. Click Flash to install the firmware.<br>
+    5. Choose whether to erase the device:<br>
+        - Check “Erase device” for a clean installation of new firmware.<br>
+        - Uncheck if updating the firmware without erasing existing data.<br>
+        </p>
+    
+      <div class="tab-content">
+
+        <iframe
+          id="content-frame"
+          src="./pages/esp32-bluetooth-obd2-gauge.html"
+          frameborder="0"
+          style="
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+          "
+          onerror="console.error('Failed to load page')"
+          onload="console.log('Page loaded successfully')"
+        >
+        </iframe>
+      </div>
+      
     </div>
 
+
     <script src="./js/tabs.js"></script>
-</body>
+  </body>
 </html>
