@@ -2,10 +2,18 @@
 <html>
   <head>
     <title>OBD2 Gauge Catalyst</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="referrer" content="no-referrer" />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <link rel="stylesheet" href="../css/styles.css" />
     <link rel="stylesheet" href="../css/tabs.css" />
   </head>
+
 
   <body>
     <div>
@@ -39,10 +47,7 @@
           >
             <button
               slot="activate"
-              style="margin-top: 30px; background-color: green"
-            >
-              Flash</button
-            ><br />
+              style="margin-top: 30px; background-color: green">Flash</button><br />
             <span slot="unsupported">Your browser doesn't support!</span><br />
             <span slot="not-allowed">Not support HTTP!</span>
           </esp-web-install-button>
@@ -67,6 +72,7 @@
         document
           .getElementById("init-button-other")
           .setAttribute("manifest", `${device}_manifest.json`);
+           terminal.value = "";//clear terminal
         terminalOut("Select Device -> " + device);
       }
 

@@ -8,18 +8,18 @@ body {
 
 #main {
     background-color: lightgray;
-    padding: 20px;
+    padding: 10px;
     border-radius: 10px;
     max-width: 500px;
 }
 
-h1 {
+h2 {
     color: #333;
     margin-bottom: 20px;
 }
 
 button {
-    background-color: dodgerblue;
+    background-color: green;
     color: white;
     border: none;
     border-radius: 5px;
