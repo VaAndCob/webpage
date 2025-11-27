@@ -15,11 +15,14 @@ document.addEventListener('DOMContentLoaded', () => {
             case 'printpoop':
                 pageName = 'printpoop';
                 break;
-            case 'other':
+            case 'catalyst':
                 pageName = 'OBD2-Gauge-Catalyst';
                 break;
+            case 'tunebar':
+                pageName = 'tunebar';
+                break;
             default:
-                pageName = 'esp32-bluetooth-obd2-gauge';
+                pageName = 'other';
         }
         const newSrc = `./pages/${pageName}.html`;
         console.log('Loading page:', newSrc);
