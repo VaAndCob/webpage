@@ -1,5 +1,5 @@
 {
-  "name": "TuneBar ESP32-S3",
+  "name": "TuneBar",
   "version": "v1.0.0",
   "new_install_prompt_erase": false,
   "new_install_improv_wait_time": 0,
