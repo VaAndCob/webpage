@@ -1,7 +1,7 @@
 {
   "name": "TuneBar",
   "version": "v1.0.0",
-  "new_install_prompt_erase": false,
+  "new_install_prompt_erase": true,
   "new_install_improv_wait_time": 0,
   "builds": [
     {
@@ -9,7 +9,7 @@
       "parts": [
         {
           "path": "bootloader.bin",
-          "offset": 4096
+          "offset": 0
         },
         {
           "path": "partitions.bin",
@@ -25,7 +25,7 @@
         },
         {
           "path": "littlefs.bin",
-          "offset": 12648448
+          "offset": 12713984
         }
       ]
     }
