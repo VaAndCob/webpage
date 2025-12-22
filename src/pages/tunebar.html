@@ -42,7 +42,7 @@
             <textarea readonly id="terminal-other"></textarea>
           </div>
           <esp-web-install-button
-            manifest="other_device_manifest.json"
+            manifest="tunebar_manifest.json"
             id="init-button-other"
           >
             <button
@@ -55,31 +55,49 @@
         </fieldset>
       </div>
     </div>
-    <!--
+    
     <script
       type="module"
       src="https://vaandcob.github.io/webpage/webserial/install-button.js?module"
     ></script>
-    <script src="../js/flasher.js"></script>
+
     <script>
-      function terminalOut(message) {
-        document.getElementById("terminal-other").innerHTML += message + "\n";
-        document.getElementById("terminal-other").scrollTop =
-          document.getElementById("terminal-other").scrollHeight;
+      let url = "../../firmware/tunebar/";
+      const terminal = document.getElementById("terminal");
+   function terminalOut(message) {
+        terminal.value += message + "\n";
+        terminal.scrollTop = terminal.scrollHeight; // Scroll to the bottom
       }
 
+      // change init device manifest for flashing button
       function setManifest(device) {
         document
-          .getElementById("init-button-other")
-          .setAttribute("manifest", `${device}_manifest.json`);
-           terminal.value = "";//clear terminal
-        terminalOut("Select Device -> " + device);
+          .getElementById("init-button")
+          .setAttribute("manifest", `${url}${device}_manifest.json`);
+          terminal.value = "";//clear terminal
+        terminalOut("Select firmware -> " + device);
+        readManifest(device);
       }
 
       window.onload = function () {
-        terminalOut("Select firmware -> Other Device");
+        setManifest("tunebar");
+      }
+
+      async function readManifest(device) {
+        try {
+          const response = await fetch(`${url}${device}_manifest.json`);
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          const manifestData = await response.json();
+          // Update the h2 heading
+          document.querySelector(
+            "h2"
+          ).textContent = `${manifestData.name} - ${manifestData.version}`;
+        } catch (error) {
+          terminalOut(`Error reading manifest: ${error.message}`);
+        }
       }
     </script>
-    -->
   </body>
 </html>
