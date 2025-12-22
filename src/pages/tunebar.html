@@ -41,16 +41,11 @@
                   <div class="terminal-container">
             <textarea readonly id="terminal-other"></textarea>
           </div>
-          <esp-web-install-button
-            manifest="tunebar_manifest.json"
-            id="init-button-other"
-          >
-            <button
-              slot="activate"
-              style="margin-top: 30px; background-color: green">Flash</button><br />
-            <span slot="unsupported">Your browser doesn't support!</span><br />
-            <span slot="not-allowed">Not support HTTP!</span>
-          </esp-web-install-button>
+         <esp-web-install-button id="init-button">
+          <button slot="activate" style="margin-top: 30px">Flash</button><br />
+          <span slot="unsupported">Your browser doesn't support!</span><br />
+          <span slot="not-allowed">Not support HTTP!</span>
+        </esp-web-install-button>
   
         </fieldset>
       </div>
