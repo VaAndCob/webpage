@@ -12,11 +12,9 @@
     <meta http-equiv="Expires" content="0" />
     <link rel="stylesheet" href="../css/styles.css" />
     <link rel="stylesheet" href="../css/tabs.css" />
-  </head>
-
+  </head>  
 
   <body>
-    <div>
       <h2>TuneBar (under development)</h2>
   
        <a href="https://youtu.be/vSDkJrvMamY"  target="_blank" rel="noopener noreferrer">Youtube</a>
@@ -28,10 +26,10 @@
           <form id="select-firmware-other">
             <input
               type="radio"
-              id="tunebar"
+              id="device1"
+              class=""firmware-raido"
               name="device"
               value="tunebar"
-              style="margin: 20px"
               onclick="setManifest('tunebar')"
               checked
             />
@@ -39,7 +37,7 @@
           </form>
           <hr />
                   <div class="terminal-container">
-            <textarea readonly id="terminal-other"></textarea>
+            <textarea readonly id="terminal"></textarea>
           </div>
          <esp-web-install-button id="init-button">
           <button slot="activate" style="margin-top: 30px">Flash</button><br />
@@ -48,12 +46,11 @@
         </esp-web-install-button>
   
         </fieldset>
-      </div>
     </div>
     
     <script
       type="module"
-      src="https://vaandcob.github.io/webpage/webserial/install-button.js?module"
+      src="../../webserial/install-button.js?module"
     ></script>
 
     <script>
@@ -76,7 +73,7 @@
 
       window.onload = function () {
         setManifest("tunebar");
-      }
+      };
 
       async function readManifest(device) {
         try {
