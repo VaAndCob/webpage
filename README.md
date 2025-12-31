@@ -1,2 +1,2 @@
 # webflasher
-utility web flasher for esp32 project
+Utility web flasher for esp32 project
