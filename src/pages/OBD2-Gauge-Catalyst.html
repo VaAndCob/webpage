@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>OBD2 Gauge Catalyst (ELM327 Serial)</title>
+    <title>ESP32 Serial OBD2 Gauge Catalyst (under development)</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="referrer" content="no-referrer" />
     <meta
@@ -14,72 +14,82 @@
     <link rel="stylesheet" href="../css/tabs.css" />
   </head>
 
-
   <body>
-    <div>
-      <h2>OBD2 Gauge Catalyst ELM327 Serial (under development)</h2>
-  
-       <a href="https://youtube.com/shorts/zx2siWw9A-U?si=RCQxRB1wuyyViUxC"  target="_blank" rel="noopener noreferrer">Youtube</a>
-       <br><br>
+    <h2 id="firmware-title">ESP32 Serial OBD2 Gauge</h2>
+    <a href="https://github.com/VaAndCob/ESP32-Blutooth-OBD2-Gauge" target="_blank" rel="noopener noreferrer">Link to the project</a>
+    <br><br>
 
-      <div id="main">
-        <fieldset>
-          <legend>Select firmware</legend>
-          <form id="select-firmware-other">
-            <input
-              type="radio"
-              id="device-other"
-              name="device"
-              value="other_device"
-              style="margin: 20px"
-              onclick="setManifest('Catalyst')"
-              checked
-            />
-            <label for="device-other">OBD2 Gauge Catalyst (ESP32-CYD-2.8")</label><br />
-          </form>
-          <hr />
-                  <div class="terminal-container">
-            <textarea readonly id="terminal-other"></textarea>
-          </div>
-          <esp-web-install-button
-            manifest="catalyst_manifest.json"
-            id="init-button-other"
-          >
-            <button
-              slot="activate"
-              style="margin-top: 30px; background-color: green">Flash</button><br />
-            <span slot="unsupported">Your browser doesn't support!</span><br />
-            <span slot="not-allowed">Not support HTTP!</span>
-          </esp-web-install-button>
-  
-        </fieldset>
-      </div>
+    <div id="main">
+      <fieldset>
+        <legend>Select Vehicle Model</legend>
+        <form id="vehicle-select">
+          <input
+            type="radio"
+            id="t5"
+            name="device"
+            value="catalyst"
+            class="firmware-radio"
+            onclick="setManifest('catalyst')"
+            checked
+          />
+          <label for="t5">Ford T5</label><br />
+         
+        </form>
+        <hr />
+                <div class="terminal-container">
+          <textarea readonly id="terminal"></textarea>
+        </div>
+        <esp-web-install-button id="init-button">
+          <button slot="activate" style="margin-top: 30px">Flash</button><br />
+          <span slot="unsupported">Your browser doesn't support!</span><br />
+          <span slot="not-allowed">Not support HTTP!</span>
+        </esp-web-install-button>
+
+      </fieldset>
     </div>
-    
+
     <script
       type="module"
       src="https://vaandcob.github.io/webpage/webserial/install-button.js?module"
     ></script>
-    <script src="../js/flasher.js"></script>
+
     <script>
+      let url = "../../firmware/catalyst/";
+      const terminal = document.getElementById("terminal");
+
       function terminalOut(message) {
-        document.getElementById("terminal-other").innerHTML += message + "\n";
-        document.getElementById("terminal-other").scrollTop =
-          document.getElementById("terminal-other").scrollHeight;
+        terminal.value += message + "\n";
+        terminal.scrollTop = terminal.scrollHeight; // Scroll to the bottom
       }
 
       function setManifest(device) {
         document
-          .getElementById("init-button-other")
-          .setAttribute("manifest", `${device}_manifest.json`);
+          .getElementById("init-button")
+          .setAttribute("manifest", `${url}${device}_manifest.json`);
            terminal.value = "";//clear terminal
-        terminalOut("Select Device -> " + device);
+        terminalOut("Select firmware -> " + device);
+        readManifest(device);
       }
 
       window.onload = function () {
-        terminalOut("Select firmware ->");
+        setManifest("T5");
+      };
+
+      async function readManifest(device) {
+        try {
+          const response = await fetch(`${url}${device}_manifest.json`);
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          const manifestData = await response.json();
+          // Update the h2 heading
+          document.querySelector(
+            "h2"
+          ).textContent = `${manifestData.name} - ${manifestData.version}`;
+        } catch (error) {
+          terminalOut(`Error reading manifest: ${error.message}`);
+        }
       }
     </script>
-  
   </body>
 </html>
