@@ -12,7 +12,7 @@
         { "path": "boot_app0.bin",  "offset": 57344 },
         { "path": "tunebar.bin",    "offset": 65536 },
         {
-          "path": "spiffs.bin",
+          "path": "littlefs.bin",
           "offset": 14876672
         }
       ]
