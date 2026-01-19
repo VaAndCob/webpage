@@ -13,7 +13,7 @@
         { "path": "tunebar.bin",    "offset": 65536 },
         {
           "path": "littlefs.bin",
-          "offset": 14876672
+          "offset": 14811136
         }
       ]
     }
