@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>taptappaw</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="referrer" content="no-referrer" />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/tabs.css" />
+  </head>  
+
+  <body>
+      <h2>taptappaw</h2>
+       <a href="https://github.com/VaAndCob/TapTapPaw"  target="_blank" rel="noopener noreferrer">Link to the project</a> | <a href="https://s.click.aliexpress.com/e/_c3uiGvqR"  target="_blank" rel="noopener noreferrer">🛍 Buy Item</a>
+       <br><br>
+        <a>
+          <img
+            src="../asset/animation.gif"
+            alt="TapTapPaw"
+            style="max-width: 300px; height: auto"
+          />
+        </a>
+
+       <br><br>
+
+      <div id="main">
+        <fieldset>
+          <legend>Select firmware</legend>
+          <form id="select-firmware-other">
+            <input
+              type="radio"
+              id="device1"
+              class=""firmware-raido"
+              name="device"
+              value="taptappaw"
+              onclick="setManifest('taptappaw')"
+              checked
+            />
+            <label for="device-other">taptappaw (ESP32 CYD Capacitive Touch 2.8")</label><br />
+          </form>
+          <hr />
+                  <div class="terminal-container">
+            <textarea readonly id="terminal"></textarea>
+          </div>
+         <esp-web-install-button id="init-button">
+          <button slot="activate" style="margin-top: 30px">Flash</button><br />
+          <span slot="unsupported">Your browser doesn't support!</span><br />
+          <span slot="not-allowed">Not support HTTP!</span>
+        </esp-web-install-button>
+  
+        </fieldset>
+    </div>
+    
+    <script
+      type="module"
+      src="../../webserial/install-button.js?module"
+    ></script>
+
+    <script>
+      let url = "../../firmware/taptappaw/";
+      const terminal = document.getElementById("terminal");
+   function terminalOut(message) {
+        terminal.value += message + "\n";
+        terminal.scrollTop = terminal.scrollHeight; // Scroll to the bottom
+      }
+
+      // change init device manifest for flashing button
+      function setManifest(device) {
+        document
+          .getElementById("init-button")
+          .setAttribute("manifest", `${url}${device}_manifest.json`);
+          terminal.value = "";//clear terminal
+        terminalOut("Select firmware -> " + device);
+        readManifest(device);
+      }
+
+      window.onload = function () {
+        setManifest("taptappaw");
+      };
+
+      async function readManifest(device) {
+        try {
+          const response = await fetch(`${url}${device}_manifest.json`);
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          const manifestData = await response.json();
+          // Update the h2 heading
+          document.querySelector(
+            "h2"
+          ).textContent = `${manifestData.name} - ${manifestData.version}`;
+        } catch (error) {
+          terminalOut(`Error reading manifest: ${error.message}`);
+        }
+      }
+    </script>
+  </body>
+</html>
