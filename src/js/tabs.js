@@ -21,6 +21,9 @@ document.addEventListener('DOMContentLoaded', () => {
             case 'tunebar':
                 pageName = 'tunebar';
                 break;
+            case 'taptappaw':
+                pageName = 'taptappaw';
+                break;
             default:
                 pageName = 'other';
         }
