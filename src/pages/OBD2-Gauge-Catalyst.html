@@ -37,19 +37,28 @@
 
     <div id="main">
       <fieldset>
-        <legend>Select Vehicle Model</legend>
-        <form id="vehicle-select">
+        <legend>Select board</legend>
+        <form id="select-firmware">
           <input
             type="radio"
             id="catalyst"
             name="device"
             value="catalyst"
             class="firmware-radio"
-            onclick="setManifest('catalyst')"
+            onclick="setManifest('catalyst_1')"
             checked
           />
-          <label for="catalyst">ESP32 Serial OBD2 Gauge Catalyst (Under development)</label><br />
-         
+          <label for="catalyst">ESP32 CYD 2.8" Varint 1</label><br />
+          <input
+            type="radio"
+            id="catalyst"
+            name="device"
+            value="catalyst"
+            class="firmware-radio"
+            onclick="setManifest('catalyst_2')"
+            checked
+          />
+          <label for="catalyst">ESP32 CYD 2.8" Varint 2</label><br />
         </form>
         <hr />
                 <div class="terminal-container">
