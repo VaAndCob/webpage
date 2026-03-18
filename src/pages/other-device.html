@@ -8,7 +8,8 @@
   </head>
 
   <body>
-    <div>
+    <div class="page-layout">
+      <div class="page-intro">
       <h2>OBD2 Gauge Catalyst</h2>
       <div>
         1. Google Chrome or Microsoft Edge<br />
@@ -16,6 +17,7 @@
         3. Click Flash to install firmware<br />
       </div>
       <br />
+      </div>
       <div id="main">
         <fieldset>
           <legend>Select firmware for Other Device</legend>
@@ -32,6 +34,9 @@
             <label for="device-other">Other Device</label><br />
           </form>
           <hr />
+          <div class="terminal-container">
+            <textarea readonly id="terminal-other"></textarea>
+          </div>
           <esp-web-install-button
             manifest="other_device_manifest.json"
             id="init-button-other"
@@ -45,9 +50,6 @@
             <span slot="unsupported">Your browser doesn't support!</span><br />
             <span slot="not-allowed">Not support HTTP!</span>
           </esp-web-install-button>
-          <div class="terminal-container">
-            <textarea readonly id="terminal-other"></textarea>
-          </div>
         </fieldset>
       </div>
     </div>

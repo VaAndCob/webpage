@@ -12,22 +12,23 @@
     <div class="tab-container">
       <div class="top-bar">
         <img src="./asset/logo.webp" width="50" height="50">
-        <a href="https://www.youtube.com/@vaandcob" target="_blank"><img src="./asset/youtube.png" alt="YouTube" style="width:32px;height:32px;vertical-align:middle;"></a>
-        <a href="https://www.facebook.com/vaandcob" target="_blank"><img src="./asset/facebook.png" alt="Facebook" style="width:32px;height:32px;vertical-align:middle;"></a>
+        <a href="https://www.youtube.com/@vaandcob" target="_blank"><img src="./asset/youtube.png" alt="YouTube" class="social-icon"></a>
+        <a href="https://www.facebook.com/vaandcob" target="_blank"><img src="./asset/facebook.png" alt="Facebook" class="social-icon"></a>
         <button class="vibetime-button" onclick="window.open('https://vibetime.pages.dev', '_blank')">🎵 Vibetime</button>
-        <a href="https://www.buymeacoffee.com/vaandcob"><img
+        <a href="https://www.buymeacoffee.com/vaandcob" class="coffee-link"><img
           src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=vaandcob&button_colour=FF5F5F&font_colour=ffffff&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00"/></a>
         
       </div>
 
       <div class="tabs">
-        Select the project:
+        <span class="tabs-label">Select the project:</span>
         <button class="tab-button active" data-tab="obd2">📟 ESP32 Bluetooth OBD2 Gauge</button>
         <button class="tab-button" data-tab="printpoop">🐱 PrintpooP</button>
         <button class="tab-button" data-tab="catalyst">📟 ESP32 OBD2 Gauge Catalyst</button>
         <button class="tab-button" data-tab="tunebar">🎶 TuneBar</button>
         <button class="tab-button" data-tab="taptappaw">🐾 TapTapPaw</button>
       </div>
+      <div class="instructions-container">
       <ol>
         <li>Open this page in <strong>Google Chrome</strong> or <strong>Microsoft Edge</strong>.</li>
         <li>Connect the board to your computer via USB.</li>
@@ -40,20 +41,13 @@
           </ul>
         </li>
       </ol>
+      </div>
     
       <div class="tab-content">
         <iframe
           id="content-frame"
           src="./pages/esp32-bluetooth-obd2-gauge.html"
-          frameborder="0"
-          style="
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-          "
+          class="responsive-iframe"
           onerror="console.error('Failed to load page')"
           onload="console.log('Page loaded successfully')"
         >

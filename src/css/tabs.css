@@ -1,15 +1,33 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    color: #333;
+}
+
 .top-bar {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   margin-bottom: 10px;
-  padding: 0 10px; /* Added some padding */
-  gap: 20px; /* Add some space between the buttons */
+  padding: 10px 20px;
+  gap: 15px; /* Add some space between the buttons */
+  flex-wrap: wrap;
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
 }
 
 /* This will target both the coffee link and the vibetime button */
 .top-bar > * {
-  
+  flex-shrink: 0;
+}
+
+.social-icon {
+    width: 32px;
+    height: 32px;
+    vertical-align: middle;
 }
 
 .vibetime-button {
@@ -30,33 +48,218 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    
+    background-color: #f4f4f9;
 }
 
 .tabs {
-    padding: 10px;
-    background-color: #333;
+    padding: 15px 20px;
+    background: linear-gradient(135deg, #2c3e50, #4ca1af);
     color: white;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    z-index: 10;
+    justify-content: center;
+}
+
+.tabs-label {
+    font-weight: 600;
+    margin-right: 10px;
+    font-size: 1.1em;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
 }
 
 .tab-content {
     flex: 1;
     position: relative;
     width: 100%;
-    height: calc(100vh - 60px);
+    /* Height is handled by flex: 1 */
+    background-color: white;
+    overflow: hidden; /* Let the iframe handle the scroll */
+}
+
+.responsive-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
 }
 
 .tab-button {
-    padding: 10px 20px;
-    margin-right: 5px;
+    padding: 10px 24px;
+    margin-right: 0;
     border: none;
-    border-radius: 5px;
+    border-radius: 50px;
     cursor: pointer;
-    background-color: #666;
-    color: white;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.tab-button:hover {
+    background-color: rgba(255, 255, 255, 0.35);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 .tab-button.active {
-    background-color: darkorange;
+    background: white;
+    color: #2c3e50;
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    font-weight: 700;
+    border-color: white;
+}
+
+.instructions-container {
+    background-color: #fff;
+    color: #555;
+    padding: 10px 20px;
+    border-bottom: 1px solid #eee;
+    font-size: 0.9em;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    z-index: 5;
+}
+
+.instructions-container ol {
+    margin: 0;
+    padding-left: 25px;
+}
+
+.instructions-container li {
+    margin-bottom: 4px;
+}
+
+.page-layout {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 30px;
+    padding: 20px;
+}
+
+.page-intro {
+    flex: 0 1 450px;
+    text-align: left;
+    padding: 0px;
+}
+
+.page-intro img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-top: 0px;
+}
+
+.page-layout #main {
+    flex: 1 1 350px;
+    max-width: 500px;
+    margin-top: 0;
+}
+
+/* Card Style for the Flasher Area */
+#main fieldset {
+    background: #fff;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    padding: 10px;
+}
+
+#main legend {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #f0f2f5;
+    width: 100%;
+    display: block;
+}
+
+/* Style the Flash Button inside the slot */
+esp-web-install-button button {
+    background-color: #007bff !important;
+    color: white !important;
+    border-radius: 6px !important;
+    padding: 12px 30px !important;
+    font-weight: 600 !important;
+    font-size: 16px !important;
+    transition: background-color 0.2s, transform 0.1s !important;
+    box-shadow: 0 2px 5px rgba(0,123,255,0.3) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+esp-web-install-button button:hover {
+    background-color: #0056b3 !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,123,255,0.4) !important;
+}
+
+.terminal-container {
+    height: auto;
+}
+
+.terminal-container textarea {
+    width: 100%;
+    min-height: 70px;
+    resize: vertical;
+    box-sizing: border-box;
+    background: #1e1e1e; /* Terminal Black */
+    color: #00ff00; /* Hacker Green */
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 0.85rem;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #333;
+    margin-top: 10px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Radio button styling */
+.firmware-radio {
+    accent-color: #007bff;
+    transform: scale(1.2);
+    margin-right: 8px;
+    margin-bottom: 10px;
+}
+
+label {
+    font-weight: 500;
+    color: #444;
+    cursor: pointer;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #eee;
+    margin: 20px 0;
+}
+
+@media (max-width: 700px) {
+    .page-layout {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .page-intro, .page-layout #main {
+        flex: 1 1 100%;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .page-intro {
+        text-align: center;
+    }
 }
