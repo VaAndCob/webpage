@@ -45,11 +45,33 @@
               id="device1"
               class="firmware-radio"
               name="device"
-              value="taptappaw"
-              onclick="setManifest('taptappaw')"
+              value="taptappaw_purple_28_capacitive"
+              onclick="setManifest('taptappaw_purple_28_capacitive')"
               checked
             />
-            <label for="device-other">taptappaw (ESP32 Purple CYD Capacitive Touch 2.8")</label><br />
+            <label for="device1">ESP32 Purple Capacitive Touch 2.8"</label><br />
+
+            <input
+              type="radio"
+              id="device2"
+              class="firmware-radio"
+              name="device"
+              value="taptappaw_cyd_28_1"
+              onclick="setManifest('taptappaw_cyd_28_1')"
+              
+            />
+            <label for="device2">ESP32 CYD Resistive Touch 2.8" Variant 1</label><br />
+     
+            <input
+              type="radio"
+              id="device3"
+              class="firmware-radio"
+              name="device"
+              value="taptappaw_cyd_28_2"
+              onclick="setManifest('taptappaw_cyd_28_2')"
+              
+            />
+            <label for="device3">ESP32 CYD Resistive Touch 2.8" Variant 2</label><br />
           </form>
           <hr />
                   <div class="terminal-container">
@@ -89,10 +111,10 @@
       }
 
       window.onload = function () {
-        setManifest("taptappaw");
+        setManifest("taptappaw_purple_28_capacitive");
       };
 
-      async function readManifest(device) {
+       async function readManifest(device) {
         try {
           const response = await fetch(`${url}${device}_manifest.json`);
           if (!response.ok) {
