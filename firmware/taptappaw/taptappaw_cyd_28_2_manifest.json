@@ -1,17 +1,18 @@
 {
-    "name": "TapTapPaw",
-    "version": "1.0.3",
-    "new_install_prompt_erase": true, 
-    "new_install_improv_wait_time": 0,
-    "builds": [
-      {
-        "chipFamily": "ESP32",
-        "parts": [
-          { "path": "bootloader.bin", "offset": 4096 },
-          { "path": "partitions.bin", "offset": 32768},
-          { "path": "boot_app0.bin", "offset": 57344 },
-          { "path": "cyd_28_2.bin", "offset": 65536 }
-        ]
-      }
-    ]
+  "name": "TapTapPaw",
+  "version": "1.0.3",
+  "new_install_prompt_erase": true,
+  "new_install_improv_wait_time": 0,
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "parts": [
+        { "path": "bootloader.bin", "offset": 4096 },
+        { "path": "partitions.bin", "offset": 32768 },
+        { "path": "boot_app0.bin", "offset": 57344 },
+        { "path": "cyd_28_2.bin", "offset": 65536 },
+        { "path": "littlefs.bin", "offset": 3735552 }
+      ]
+    }
+  ]
 }
