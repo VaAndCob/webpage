@@ -36,7 +36,7 @@
       <div id="main">
          <br>
         Download Latest Release Desktop App<br>
-        <a href="https://github.com/VaAndCob/TapTapPaw/releases/download/v1.0.2/TapTapPaw-1.0.2-arm64.dmg">macOS apple silicon</a> | <a href="https://github.com/VaAndCob/TapTapPaw/releases/download/v1.0.2/TapTapPaw.Setup.1.0.2.exe"  target="_blank" rel="noopener noreferrer">Windows 10/11</a>
+        <a id="desktop-macos-link" href="">macOS apple silicon</a> | <a id="desktop-windows-link" href=""  target="_blank" rel="noopener noreferrer">Windows 10/11</a>
         <hr>
         <fieldset>
           <legend>Select firmware</legend>
@@ -94,6 +94,7 @@
     ></script>
 
     <script>
+
       let url = "../../firmware/taptappaw/";
       const terminal = document.getElementById("terminal");
    function terminalOut(message) {
@@ -113,7 +114,43 @@
 
       window.onload = function () {
         setManifest("taptappaw_purple_28_capacitive");
+        readLatestReleaseVersion();
       };
+
+      function normalizeVersionTag(tag) {
+        if (!tag) return "";
+        return tag.startsWith("v") ? tag.slice(1) : tag;
+      }
+
+       function updateDesktopLinks(versionTag) {
+        const macLink = document.getElementById("desktop-macos-link");
+       const winLink = document.getElementById("desktop-windows-link");
+        if (!macLink || !winLink) return;
+
+        const version = normalizeVersionTag(versionTag);
+        if (!version) return;
+
+        macLink.href = `https://github.com/VaAndCob/TapTapPaw/releases/download/${version}/TapTapPaw-${version}-arm64.dmg`;
+        winLink.href = `https://github.com/VaAndCob/TapTapPaw/releases/download/${version}/TapTapPaw.Setup.${version}.exe`;
+      }
+
+      const GITHUB_LATEST_RELEASE_URL =
+        "https://api.github.com/repos/vaandcob/taptappaw/releases/latest";
+
+      async function readLatestReleaseVersion() {
+        try {
+          const response = await fetch(GITHUB_LATEST_RELEASE_URL);
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          const releaseData = await response.json();
+          if (releaseData && releaseData.tag_name) {
+            updateDesktopLinks(releaseData.tag_name);
+          }
+        } catch (error) {
+          terminalOut(`Error reading latest release: ${error.message}`);
+        }
+      }
 
        async function readManifest(device) {
         try {
