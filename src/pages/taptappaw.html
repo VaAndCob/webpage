@@ -35,7 +35,7 @@
 
       <div id="main">
          <br>
-        Download Latest Release Desktop App<br>
+        Download Latest Release Desktop App Version <span id="desktop-app-version"></span><br>
         <a id="desktop-macos-link" href="">macOS apple silicon</a> | <a id="desktop-windows-link" href=""  target="_blank" rel="noopener noreferrer">Windows 10/11</a>
         <hr>
         <fieldset>
@@ -125,11 +125,13 @@
        function updateDesktopLinks(versionTag) {
         const macLink = document.getElementById("desktop-macos-link");
        const winLink = document.getElementById("desktop-windows-link");
+        const versionEl = document.getElementById("desktop-app-version");
         if (!macLink || !winLink) return;
 
         const version = normalizeVersionTag(versionTag);
         if (!version) return;
 
+        if (versionEl) versionEl.textContent = version;
         macLink.href = `https://github.com/VaAndCob/TapTapPaw/releases/download/${version}/TapTapPaw-${version}-arm64.dmg`;
         winLink.href = `https://github.com/VaAndCob/TapTapPaw/releases/download/${version}/TapTapPaw.Setup.${version}.exe`;
       }
