@@ -57,7 +57,7 @@
           </form>
           <hr />
           <div class="terminal-container">
-            <textarea readonly id="terminal">Ready to flash iPod SmartDock 2.1.12.</textarea>
+            <textarea readonly id="terminal">Ready to flash iPod Smart Dock 2.1.12.</textarea>
           </div>
           <esp-web-install-button
             id="init-button"
@@ -71,7 +71,10 @@
       </div>
     </div>
 
-    <script type="module" src="../../webserial/install-button.js?module"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/esp-web-tools@10.4.0/dist/web/install-button.js?module"
+    ></script>
     <script>
       const terminal = document.getElementById("terminal");
       const manifestUrl =
