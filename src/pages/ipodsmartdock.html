@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="referrer" content="no-referrer" />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>iPod SmartDock Web Flasher</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/tabs.css" />
+  </head>
+
+  <body>
+    <div class="page-layout">
+      <div class="page-intro">
+        <h2 id="firmware-title">iPod Smart Dock</h2>
+        <p>
+          <strong>ขั้นตอนการติดตั้งเฟิร์มแวร์:</strong><br>
+          1. กดปุ่ม 🛜 WiFi และ ปุ่ม 🔄 Reset พร้อมกัน<br>
+          2. ปล่อยปุ่ม 🔄 Reset<br>
+          3. เสียบสาย USB เข้ากับคอมพิวเตอร์<br>
+          4. คลิกปุ่ม Flash เพื่อเริ่มการติดตั้งเฟิร์มแวร์<br>
+          5. เลือก Port ESP32-S2 USB-MODEM
+        </p>
+        <iframe
+          width="400"
+          height="300"
+          style="max-width: 100%; border: 0"
+          src="https://www.youtube-nocookie.com/embed/9AMtOfmdr1U"
+          title="iPodSmartDock YouTube video"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <div id="main">
+        <fieldset>
+          <legend>Install firmware</legend>
+          <form id="select-firmware">
+            <input
+              type="radio"
+              id="ipodsmartdock-2-1-12"
+              class="firmware-radio"
+              name="device"
+              value="ipodsmartdock2_1_12"
+              checked
+            />
+            <label for="ipodsmartdock-2-1-12">
+              iPod Smart Dock 2.1.12 (ESP32-S2)
+            </label>
+          </form>
+          <hr />
+          <div class="terminal-container">
+            <textarea readonly id="terminal">Ready to flash iPod SmartDock 2.1.12.</textarea>
+          </div>
+          <esp-web-install-button
+            id="init-button"
+            manifest="../../firmware/ipodsmartdock/ipodsmartdock_manifest.json"
+          >
+            <button slot="activate" style="margin-top: 30px">Flash</button><br />
+            <span slot="unsupported">Your browser doesn't support Web Serial.</span><br />
+            <span slot="not-allowed">Web flashing requires HTTPS or localhost.</span>
+          </esp-web-install-button>
+        </fieldset>
+      </div>
+    </div>
+
+    <script type="module" src="../../webserial/install-button.js?module"></script>
+    <script>
+      const terminal = document.getElementById("terminal");
+      const manifestUrl =
+        "../../firmware/ipodsmartdock/ipodsmartdock_manifest.json";
+
+      async function showManifestVersion() {
+        try {
+          const response = await fetch(manifestUrl);
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+
+          const manifest = await response.json();
+          document.getElementById(
+            "firmware-title"
+          ).textContent = `${manifest.name} - ${manifest.version}`;
+        } catch (error) {
+          terminal.value += `\nError reading manifest: ${error.message}`;
+          terminal.scrollTop = terminal.scrollHeight;
+        }
+      }
+
+      showManifestVersion();
+    </script>
+  </body>
+</html>

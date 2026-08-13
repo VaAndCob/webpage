@@ -28,6 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
             case 'taptappaw':
                 pageName = 'taptappaw';
                 break;
+            case 'ipodsmartdock':
+                pageName = 'ipodsmartdock';
+                break;
             default:
                 pageName = 'other';
         }

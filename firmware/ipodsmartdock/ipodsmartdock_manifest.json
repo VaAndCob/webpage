@@ -1,0 +1,17 @@
+{
+  "name": "iPodSmartDock",
+  "version": "2.1.12",
+  "new_install_prompt_erase": false,
+  "new_install_improv_wait_time": 0,
+  "builds": [
+    {
+      "chipFamily": "ESP32-S2",
+      "parts": [
+        {
+          "path": "ipodsmartdock2_1_12.bin",
+          "offset": 0
+        }
+      ]
+    }
+  ]
+}
