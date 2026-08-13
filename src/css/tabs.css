@@ -167,6 +167,18 @@ body {
     margin-top: 0;
 }
 
+.page-video {
+    flex: 0 1 400px;
+}
+
+.page-video iframe {
+    display: block;
+    width: 400px;
+    max-width: 100%;
+    height: 300px;
+    border: 0;
+}
+
 /* Card Style for the Flasher Area */
 #main fieldset {
     background: #fff;
@@ -253,7 +265,7 @@ hr {
         align-items: center;
     }
 
-    .page-intro, .page-layout #main {
+    .page-intro, .page-layout #main, .page-video {
         flex: 1 1 100%;
         width: 100%;
         max-width: 100%;

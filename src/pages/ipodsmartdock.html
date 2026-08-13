@@ -21,22 +21,16 @@
         <h2 id="firmware-title">iPod Smart Dock</h2>
         <p>
           <strong>ขั้นตอนการติดตั้งเฟิร์มแวร์:</strong><br>
-          1. กดปุ่ม 🛜 WiFi และ ปุ่ม 🔄 Reset พร้อมกัน<br>
-          2. ปล่อยปุ่ม 🔄 Reset<br>
-          3. เสียบสาย USB เข้ากับคอมพิวเตอร์<br>
-          4. คลิกปุ่ม Flash เพื่อเริ่มการติดตั้งเฟิร์มแวร์<br>
-          5. เลือก Port ESP32-S2 USB-MODEM
+          1. เสียบสาย USB เข้ากับคอมพิวเตอร์<br>
+          2. กดปุ่ม 🛜 WiFi และ ปุ่ม 🔄 Reset พร้อมกัน<br>
+          3. ปล่อยปุ่ม 🔄 Reset<br>
+          4. ปล่อยปุ่ม 🛜 WiFi<br>
+          5. คลิกปุ่ม Flash เพื่อเริ่มการติดตั้งเฟิร์มแวร์<br>
+          6. เลือก Port ESP32-S2 USB-MODEM
+          7. รอการติดตั้งเฟิร์มแวร์จนเสร็จสิ้น<br>
+          8. Reset เครื่อง iPod Smart Dock<br>
+          <strong>หมายเหตุ:</strong> หากติดตั้งเฟิร์มแวร์ไม่สำเร็จ ให้ refresh หน้าเว็บอีกครั้ง
         </p>
-        <iframe
-          width="400"
-          height="300"
-          style="max-width: 100%; border: 0"
-          src="https://www.youtube-nocookie.com/embed/9AMtOfmdr1U"
-          title="iPodSmartDock YouTube video"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen
-        ></iframe>
       </div>
 
       <div id="main">
@@ -68,6 +62,18 @@
             <span slot="not-allowed">Web flashing requires HTTPS or localhost.</span>
           </esp-web-install-button>
         </fieldset>
+      </div>
+
+      <div class="page-video">
+        <iframe
+          width="400"
+          height="300"
+          src="https://www.youtube-nocookie.com/embed/9AMtOfmdr1U"
+          title="iPodSmartDock YouTube video"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
       </div>
     </div>
 
